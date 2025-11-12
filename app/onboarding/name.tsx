@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Pressable, StyleSheet, TextInput, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
@@ -14,6 +15,14 @@ const CTA_DISABLED = '#0FBF92';
 export default function OnboardingNameScreen() {
   const [name, setName] = useState('');
   const isValid = name.trim().length > 0;
+
+  const handleContinue = async () => {
+    const trimmed = name.trim();
+    if (!trimmed) return;
+    await AsyncStorage.setItem('habit:name', trimmed);
+    await AsyncStorage.setItem('onboarding:complete', 'true');
+    router.replace('/home');
+  };
 
   return (
     <ThemedView lightColor={BG} darkColor={BG} style={styles.container}>
@@ -46,7 +55,7 @@ export default function OnboardingNameScreen() {
       <Pressable
         style={[styles.cta, { backgroundColor: isValid ? CTA : CTA_DISABLED }]}
         disabled={!isValid}
-        onPress={() => router.replace('/home')}
+        onPress={handleContinue}
         accessibilityRole="button"
         accessibilityState={{ disabled: !isValid }}
       >

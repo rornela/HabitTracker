@@ -25,20 +25,17 @@ export default function OnboardingIntroScreen() {
           We know. LIFE IS HARD.
         </ThemedText>
         <ThemedText style={styles.body} lightColor={TEXT} darkColor={TEXT}>
-          And sometimes, we build habits we would rather not have
+          And sometimes, we build habits we would rather not have.
         </ThemedText>
+        
 
         <View style={styles.examples}>
-          <ThemedText style={styles.examplesTitle} lightColor={TEXT} darkColor={TEXT}>
-            Whether it’s:
-          </ThemedText>
-          <ThemedText style={styles.exampleItem} lightColor={TEXT} darkColor={TEXT}>cigarettes</ThemedText>
-          <ThemedText style={styles.exampleItem} lightColor={TEXT} darkColor={TEXT}>alcohol</ThemedText>
-          <ThemedText style={styles.exampleItem} lightColor={TEXT} darkColor={TEXT}>porn</ThemedText>
-          <ThemedText style={styles.exampleItem} lightColor={TEXT} darkColor={TEXT}>sports gambling</ThemedText>
-          <ThemedText style={styles.exampleItem} lightColor={TEXT} darkColor={TEXT}>etc.</ThemedText>
         </View>
+        <ThemedText type="subtitle" style={styles.title} lightColor={TEXT} darkColor={TEXT}>
+          But tracking them is a great guilt-free way of starting to get them under control. 
+        </ThemedText>
       </View>
+      
 
       <View style={[styles.cta, { backgroundColor: CTA }]} onTouchEnd={() => router.push('/onboarding/name')}>
         <ThemedText type="defaultSemiBold" style={styles.ctaText}>Continue</ThemedText>
